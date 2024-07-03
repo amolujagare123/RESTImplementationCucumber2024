@@ -1,0 +1,55 @@
+Request method:	POST
+Request URI:	http://chat.cookingwithamol.in/index.php/site_admin/restapi/user
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Accept=*/*
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "username": "jensendonald",
+    "password": "@(qlDblTf2",
+    "email": "matthewmendoza@jones.com",
+    "name": "Todd",
+    "surname": "King",
+    "chat_nickname": "mandy30",
+    "departments": [
+        1,
+        2
+    ],
+    "departments_read": [
+        2
+    ],
+    "department_groups": [
+        1
+    ],
+    "user_groups": [
+        1
+    ]
+}
+HTTP/1.1 400 Bad Request
+Date: Wed, 03 Jul 2024 02:18:07 GMT
+Server: Apache
+X-Powered-By: PHP/7.4.33
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+X-Frame-Options: SAMEORIGIN
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, API-Key, Authorization
+Set-Cookie: PHPSESSID=043da8bdf92a862b19ec7f01d71ca7ed; path=/; HttpOnly; SameSite=Lax
+Upgrade: h2,h2c
+Connection: Upgrade, close
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+Content-Type: application/json
+
+{
+    "error": true,
+    "result": "User exists"
+}
