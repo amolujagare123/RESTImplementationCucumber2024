@@ -7,6 +7,13 @@ Feature: All scenarios from reqres.in
     When user calls "ListUser" request with "GET" http call
     Then API call got success with status code 200
 
+  @SampleSingleUser
+  Scenario: Verify that the single user is retrieved successfully
+    Given Get Single user payload is created
+#    When user calls ListUser request with GET http call
+    When user calls "SingleUser" request with "GET" http call
+    Then API call got success with status code 200
+
   @SampleCreateUser
   Scenario: Verify user is created successfully
     Given create user payload is created

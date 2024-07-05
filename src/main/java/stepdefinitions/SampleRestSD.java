@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import Util.SampleUserResources;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +11,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import org.testng.Assert;
-import Util.POJO.chatServer.CreateUserResponsePOJO;
 
 import static io.restassured.RestAssured.given;
 
@@ -126,7 +126,22 @@ public class SampleRestSD {
     @When("user calls {string} request with {string} http call")
     public void userCallsRequestWithHttpCall(String requestType, String method) {
 
+        SampleUserResources path = SampleUserResources.valueOf(requestType);
+        String resoursePath = path.getResource();
+
         switch (method)
+        {
+            case "GET" : response = request.when().get(resoursePath); break;
+            case "POST" : response = request.when().post(resoursePath); break;
+            case "PUT" : response = request.when().put(resoursePath); break;
+            case "DELETE" : response = request.when().delete(resoursePath); break;
+            default:
+                System.out.println("Wrong method/ method not available");
+                break;
+
+        }
+
+      /*  switch (method)
         {
             case "GET" : response = request.when().get("/api/users"); break;
             case "POST" : response = request.when().post("/api/users"); break;
@@ -136,9 +151,23 @@ public class SampleRestSD {
                 System.out.println("Wrong method/ method not available");
                 break;
 
-        }
+        }*/
 
 
+
+    }
+
+    @Given("Get Single user payload is created")
+    public void getSingleUserPayloadIsCreated() {
+
+
+        sampleRequest = new RequestSpecBuilder()
+                .setBaseUri("https://reqres.in/")
+                .setContentType("application/json")
+                .build();
+
+        request = given().log().all()
+                .spec(sampleRequest);
 
     }
 }

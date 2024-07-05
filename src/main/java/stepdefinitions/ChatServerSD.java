@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import Util.ChatServerResource;
 import Util.POJO.chatServer.CreateUserPayLoadPOJO;
 import Util.POJO.chatServer.CreateUserResponsePOJO;
 import io.cucumber.java.en.Given;
@@ -146,5 +147,33 @@ public class ChatServerSD {
                 .body(getCreateUserObj(username,password,email,name,surname,nickName));
 
 
+    }
+
+    @Given("Update user payload is created for Chat server")
+    public void updateUserPayloadIsCreatedForChatServer() throws IOException {
+
+        request = given().log().all().spec(getRequestSpecBuilder())
+                .body(getCreateUserObj("amolujagare1234"
+                        ,"aaaa1234","amol@gmail.com"
+                        ,"A2222","U3333","au1234"));
+    }
+
+    @When("user calls {string} request with {string} http call for Chat server")
+    public void userCallsRequestWithHttpCallForChatServer(String requestType, String method) {
+
+        ChatServerResource path = ChatServerResource.valueOf(requestType);
+
+
+        switch (method)
+        {
+            case "GET" : response = request.when().get(path.getResource()); break;
+            case "POST" : response = request.when().post(path.getResource()); break;
+            case "PUT" : response = request.when().put(path.getResource()); break;
+            case "DELETE" : response = request.when().delete(path.getResource()); break;
+            default:
+                System.out.println("Wrong method/ method not available");
+                break;
+
+        }
     }
 }

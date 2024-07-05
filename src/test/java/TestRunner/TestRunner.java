@@ -6,9 +6,9 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Features/SampleREST.feature"
+@CucumberOptions(features = "Features/chatServer.feature"
 ,glue = "stepdefinitions"
-  //      , tags = "@createMultipleUserChat"
+      , tags = "@singleRequest"
 )
 public class TestRunner {
 }
